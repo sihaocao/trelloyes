@@ -30,24 +30,22 @@ describe('Card component', () => {
 
 
     it('renders without crashing', () => {
-      const div = document.createElement('div');
-      ReactDOM.render(<List />, div);
-      ReactDOM.unmountComponentAtNode(div);
+        const div = document.createElement('div');
+        ReactDOM.render(<List />, div);
+        ReactDOM.unmountComponentAtNode(div);
     });
 
     it('renders the UI as expected', () => {
         const props = {
-            cards: {
+            cards: [{
               id: 'a',
               title: 'First card',
               content: 'lorem ipsum'
-            }
+            }]
         }
-      
-        setProps(props)
 
         const tree = renderer
-          .create(<List header='First List' props />)
+          .create(<List header='First List' {...props} />)
           .toJSON();
         expect(tree).toMatchSnapshot();
     });
