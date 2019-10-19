@@ -8,6 +8,8 @@
 //   ReactDOM.unmountComponentAtNode(div);
 // });
 
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
@@ -31,17 +33,28 @@ describe('Card component', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<List />, div);
+        const props = {
+            cards: [
+                {
+                    id: 'a',
+                    title: 'First card',
+                    content: 'lorem ipsum'
+                }
+            ]
+        }
+        ReactDOM.render(<List {...props} />, div);
         ReactDOM.unmountComponentAtNode(div);
     });
 
     it('renders the UI as expected', () => {
         const props = {
-            cards: [{
-              id: 'a',
-              title: 'First card',
-              content: 'lorem ipsum'
-            }]
+            cards: [
+                {
+                    id: 'a',
+                    title: 'First card',
+                    content: 'lorem ipsum'
+                }
+            ]
         }
 
         const tree = renderer
