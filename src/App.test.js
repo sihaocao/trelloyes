@@ -36,9 +36,19 @@ describe('Card component', () => {
     });
 
     it('renders the UI as expected', () => {
-      const tree = renderer
-          .create(<List header='First List' cards={{ id: 'a', title: 'First card', content: 'lorem ipsum' }} />)
+        const props = {
+            cards: {
+              id: 'a',
+              title: 'First card',
+              content: 'lorem ipsum'
+            }
+        }
+      
+        setProps(props)
+
+        const tree = renderer
+          .create(<List header='First List' props />)
           .toJSON();
-      expect(tree).toMatchSnapshot();
-  });
+        expect(tree).toMatchSnapshot();
+    });
 });
